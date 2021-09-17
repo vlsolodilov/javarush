@@ -41,9 +41,8 @@ public class PlayerController {
 
         Set<Player> set = playerService.findBy(name, title, race, profession, after, before, banned, minExperience, maxExperience, minLevel, maxLevel);
         List<PlayerJson> players = playerService.sort(set, order, pageNumber, pageSize);
-        return players != null &&  !players.isEmpty()
-                ? new ResponseEntity<>(players, HttpStatus.OK)
-                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(players, HttpStatus.OK);
+
     }
 
     @GetMapping(value = "players/count")
